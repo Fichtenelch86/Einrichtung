@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Einrichtungs-Assistent</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header id="topbar">
+  <div class="brand">🛋️ Einrichtungs-Assistent</div>
+  <div class="actions">
+    <button id="btn-new" title="Neues Projekt (alles löschen)">Neu</button>
+    <button id="btn-undo" title="Rückgängig (Strg+Z)">↶ Rückgängig</button>
+    <button id="btn-redo" title="Wiederholen (Strg+Y)">↷ Wiederholen</button>
+    <span class="sep"></span>
+    <button id="btn-save" title="Projekt als JSON speichern">💾 Speichern</button>
+    <button id="btn-load" title="Projekt aus JSON laden">📂 Laden</button>
+    <input type="file" id="file-load" accept="application/json,.json" hidden>
+    <span class="sep"></span>
+    <button id="btn-export-png" title="Aktuelle Ansicht als PNG exportieren">🖼 PNG</button>
+    <button id="btn-export-svg" title="Projekt als SVG exportieren">⬇ SVG</button>
+  </div>
+</header>
+
+<div id="main">
+
+  <aside id="sidebar">
+    <section class="panel">
+      <h2>Werkzeuge</h2>
+      <div class="tools">
+        <button class="tool active" data-mode="select" title="Auswählen &amp; verschieben (Taste 1)">☝️ Auswählen</button>
+        <button class="tool" data-mode="room" title="Raum als Polygon zeichnen: Punkte klicken, Doppelklick/Enter schließt (Taste 2)">✏️ Raum zeichnen</button>
+        <button class="tool" data-mode="scale" title="Maßstab setzen: zwei Punkte auf dem Plan klicken (Taste 3)">📏 Maßstab</button>
+        <button class="tool" data-mode="hand" title="Ansicht verschieben (Taste 4)">✋ Hand</button>
+      </div>
+      <p class="hint" id="mode-hint"></p>
+    </section>
+
+    <section class="panel grow">
+      <h2>Möbel &amp; Deko</h2>
+      <p class="hint">Ziehe ein Teil auf den Plan – oder klicke es an, um es in die Mitte zu legen.</p>
+      <div id="catalog"></div>
+    </section>
+  </aside>
+
+  <main id="canvas-wrap">
+    <svg id="scene" tabindex="0">
+      <defs id="defs"></defs>
+      <g id="world">
+        <rect id="grid-bg" x="-5000" y="-5000" width="10000" height="10000" fill="none"></rect>
+        <g id="layer-plan"></g>
+        <g id="layer-rooms"></g>
+        <g id="layer-items"></g>
+        <g id="layer-overlay"></g>
+      </g>
+    </svg>
+    <div id="drop-hint" hidden>Ziehe ein Möbelstück hierher</div>
+    <div id="toast" hidden></div>
+  </main>
+
+  <aside id="props">
+    <section class="panel">
+      <h2>Grundriss</h2>
+      <div class="row">
+        <button id="btn-upload-plan">📷 Bild laden…</button>
+        <input type="file" id="file-plan" accept="image/*" hidden>
+      </div>
+      <div class="row">
+        <button id="btn-example-plan">✨ Beispiel-Grundriss laden</button>
+      </div>
+      <div id="plan-props" hidden>
+        <div class="row">
+          <label class="slider">Transparenz
+            <input type="range" id="plan-opacity" min="0" max="100" value="55">
+          </label>
+        </div>
+        <div class="row">
+          <button id="btn-remove-plan">Grundriss entfernen</button>
+        </div>
+      </div>
+      <div class="row info" id="scale-info">Maßstab: nicht gesetzt (50 px/m angenommen)</div>
+      <div class="row" id="scale-form" hidden>
+        <label>Gemessene Strecke in Metern:
+          <input type="number" id="scale-meters" min="0.1" step="0.1" value="5">
+        </label>
+        <button id="scale-ok">OK</button>
+        <button id="scale-cancel">Abbrechen</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Räume</h2>
+      <div id="room-list"><p class="hint">Noch keine Räume. Werkzeug „Raum zeichnen“ verwenden.</p></div>
+    </section>
+
+    <section class="panel grow">
+      <h2>Auswahl</h2>
+      <div id="selection-props"><p class="hint">Nichts ausgewählt. Klicke auf einen Raum oder ein Möbelstück.</p></div>
+    </section>
+  </aside>
+
+</div>
+
+<footer id="statusbar">
+  <span id="status-pos">–</span>
+  <span id="status-scale">Maßstab: –</span>
+  <span id="status-zoom">100 %</span>
+</footer>
+
+<script src="js/helpers.js"></script>
+<script src="js/catalog.js"></script>
+<script src="js/floors.js"></script>
+<script src="js/render.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
