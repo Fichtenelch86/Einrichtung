@@ -1,5 +1,7 @@
 # 🛋️ Einrichtungs-Assistent
 
+👉 **Live-Demo (per Link starten):** [fichtenelch86.github.io/Einrichtung](https://fichtenelch86.github.io/Einrichtung/)
+
 Eine statische Web-App (reines HTML/CSS/JS, **kein Build-Schritt, keine Abhängigkeiten**), mit der du einen Gebäudegrundriss lädst und virtuell einrichtest: Möbel und Dekoration platzieren, Wandfarben und Bodenbeläge ausprobieren.
 
 ## Starten
