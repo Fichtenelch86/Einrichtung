@@ -477,6 +477,8 @@ $('btn-redo').addEventListener('click', redo);
 // ---------- Init ----------
 buildCatalog();
 setMode('select');
+init3D();
+$('btn-3d').addEventListener('click', () => set3D(!v3.active));
 const restored = loadAutosave();
 if (restored) {
   state = restored;

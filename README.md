@@ -16,7 +16,7 @@ Eine statische Web-App (reines HTML/CSS/JS, **kein Build-Schritt, keine Abhängi
 2. **Maßstab setzen** (Werkzeug 📏): zwei Punkte auf einer bekannten Strecke klicken (z. B. eine 5-m-Wand) und die Länge in Metern eingeben. Danach werden Möbel in realer Größe gezeichnet, Räume zeigen m² an und die Statusleiste zeigt die Cursorposition in Metern.
 3. **Räume einzeichnen** (Werkzeug ✏️): Polygon per Klick zeichnen, Doppelklick/Enter schließt. Pro Raum rechts: Name, **Wandfarbe** (Farbfeld oder Presets) und **Bodenbelag** (Parkett, Laminat, Fliesen, Teppich, Vinyl, Beton).
 4. **Möbel & Deko platzieren**: links aus dem Katalog per Drag & Drop auf den Plan ziehen (oder anklicken = mittig platzieren). Auswählen, verschieben, über den blauen Dreh-Griff oder ±15°-Buttons drehen, nach vorne/hinten schieben, mit `Entf` löschen.
-5. **Ansichten**: Mausrad zoomt, Ziehen auf leerer Fläche (oder ✋ Hand) verschiebt.
+5. **Ansichten**: Mausrad zoomt, Ziehen auf leerer Fläche (oder ✋ Hand) verschiebt. Oben **🎲 3D** schaltet in die 3D-Ansicht (eigener Software-Renderer auf Canvas 2D, ohne Abhängigkeiten): Räume werden zu Wänden (2,6 m hoch) und Böden extrudiert, Möbel als 3D-Körper mit realen Höhen, der Grundriss liegt als texturierte Grundebene darunter. Ziehen = drehen, Mausrad = Zoom, Shift+Ziehen / Rechtsklick = verschieben, Doppelklick = Ansicht zurücksetzen. In 3D ist die Ansicht schreibgeschützt — bearbeiten geht in der 2D-Ansicht.
 6. **Sichern/Exportieren** (oben): Projekt als JSON speichern/laden, Autosave läuft automatisch im Browser (localStorage), Export als **PNG** oder **SVG**.
 
 ## Tastenkürzel
@@ -37,7 +37,8 @@ styles.css      Theme & Layout
 js/helpers.js   Utilities, Konstanten
 js/catalog.js   Möbel-Katalog (SVG-Symbole, reale Maße in m)
 js/floors.js    Bodenbeläge als SVG-Pattern
-js/render.js    Zustand, Undo/Redo, Rendering
+js/render.js    Zustand, Undo/Redo, Rendering (2D)
+js/view3d.js    3D-Ansicht (eigener Renderer: Kamera, Projektion, Textur-Mapping)
 js/main.js      Pointer-Interaktion, Import/Export, Init
 ```
 

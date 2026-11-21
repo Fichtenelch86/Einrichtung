@@ -14,6 +14,7 @@
     <button id="btn-new" title="Neues Projekt (alles löschen)">Neu</button>
     <button id="btn-undo" title="Rückgängig (Strg+Z)">↶ Rückgängig</button>
     <button id="btn-redo" title="Wiederholen (Strg+Y)">↷ Wiederholen</button>
+    <button id="btn-3d" title="3D-Ansicht umschalten">🎲 3D</button>
     <span class="sep"></span>
     <button id="btn-save" title="Projekt als JSON speichern">💾 Speichern</button>
     <button id="btn-load" title="Projekt aus JSON laden">📂 Laden</button>
@@ -57,6 +58,8 @@
       </g>
     </svg>
     <div id="drop-hint" hidden>Ziehe ein Möbelstück hierher</div>
+    <canvas id="view3d" hidden></canvas>
+    <div id="hint3d" hidden>Ziehen = drehen · Mausrad = Zoom · Shift+Ziehen / Rechtsklick = verschieben · Doppelklick = zurücksetzen</div>
     <div id="toast" hidden></div>
   </main>
 
@@ -113,6 +116,7 @@
 <script src="js/catalog.js"></script>
 <script src="js/floors.js"></script>
 <script src="js/render.js"></script>
+<script src="js/view3d.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

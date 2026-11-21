@@ -92,6 +92,7 @@ function renderAll() {
   updateScaleInfo();
   updateStatus();
   applyView();
+  if (typeof render3D === 'function') render3D();
   scheduleAutosave();
 }
 
